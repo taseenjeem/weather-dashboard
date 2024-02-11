@@ -4,12 +4,14 @@ import WeatherBoard from "./components/weather/WeatherBoard";
 const App = () => {
   return (
     <>
-      <Header />
-      <main>
-        <section>
-          <WeatherBoard />
-        </section>
-      </main>
+      <div className="grid place-items-center min-h-screen">
+        <Header />
+        <main>
+          <section>
+            <WeatherBoard />
+          </section>
+        </main>
+      </div>
     </>
   );
 };
