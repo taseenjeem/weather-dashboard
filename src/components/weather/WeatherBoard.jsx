@@ -1,8 +1,13 @@
+import { useWeather } from "../../hooks";
 import AddToFavorite from "./AddToFavorite";
 import WeatherCondition from "./WeatherCondition";
 import WeatherHeadline from "./WeatherHeadline";
 
 const WeatherBoard = () => {
+  const { loading, error, weatherData } = useWeather();
+
+  console.log(loading, error, weatherData);
+
   return (
     <>
       <div className="container">
