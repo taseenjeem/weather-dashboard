@@ -1,19 +1,42 @@
 import { useContext } from "react";
-import cloudIcon from "../../assets/cloud.svg";
 import pinIcon from "../../assets/pin.svg";
 import { WeatherContext } from "../../context";
 import formattedDate from "../../utils/date-utils";
+import CloudIcon from "../../assets/cloud.svg";
+import HazeIcon from "../../assets/haze.svg";
+import SnowIcon from "../../assets/icons/snow.svg";
+import SunnyIcon from "../../assets/icons/sunny.svg";
+import RainIcon from "../../assets/rainy.svg";
+import ThunderIcon from "../../assets/thunder.svg";
 
 const WeatherHeadline = () => {
   const { weatherData } = useContext(WeatherContext);
 
-  console.log(weatherData);
+  const getWeatherIcon = () => {
+    switch (weatherData?.climate) {
+      case "Rain":
+        return RainIcon;
+      case "Clouds":
+        return CloudIcon;
+      case "Haze":
+        return HazeIcon;
+      case "Snow":
+        return SnowIcon;
+      case "Thunder":
+        return ThunderIcon;
+      case "Sunny":
+        return SunnyIcon;
+
+      default:
+        return SunnyIcon;
+    }
+  };
 
   return (
     <>
       <div>
         <div className="max-md:flex items-center justify-between md:-mt-10">
-          <img src={cloudIcon} alt="cloud" />
+          <img src={getWeatherIcon(weatherData?.climate)} alt="cloud" />
           <div className="max-md:flex items-center max-md:space-x-4">
             <h1 className="text-[60px] lg:text-[80px] xl:text-[100px] leading-none md:mb-4">
               {weatherData?.temperature}°
